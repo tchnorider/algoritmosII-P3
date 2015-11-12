@@ -1,11 +1,12 @@
-package ejercicio3;
+package utils;
 
 public class Persona {
 
 	String cedula;
-	
-	public Persona(){		
-		
+	int clave;
+
+	public Persona() {
+
 	}
 
 	public String getCedula() {
@@ -15,4 +16,13 @@ public class Persona {
 	public void setCedula(String ci) {
 		this.cedula = ci;
 	}
+
+	public int getClave() {
+		return clave;
+	}
+
+	public void setClave(int c) {
+		this.clave = c;
+	}
+
 }

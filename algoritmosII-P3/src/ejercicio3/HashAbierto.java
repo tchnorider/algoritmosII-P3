@@ -1,5 +1,6 @@
 package ejercicio3;
 
+import utils.Persona;
 import listaDoble.Lista;
 
 public class HashAbierto {
