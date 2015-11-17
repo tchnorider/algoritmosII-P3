@@ -13,7 +13,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		testInsertarEnHashCerradoP1();
+ 		testInsertarEnHashCerradoP1();
 		testInsertarEnHashCerradoP2();
 		testInsertarEnHashCerradoP3();
 		testInsertarEnHashCerradoP4();
@@ -64,7 +64,7 @@ public class Main {
 		System.out.println("inserto p3");
 		hash.insertar(p3);
 
-		boolean r = hash.existe(p3.getCedula());
+		boolean r = hash.existePersona(p3);
 		System.out.println("clave" + p3.getClave());
 		assertTrue(r);
 	}
@@ -79,7 +79,7 @@ public class Main {
 		System.out.println("inserto p4");
 		hash.insertar(p4);
 
-		boolean r = hash.existe(p4.getCedula());
+		boolean r = hash.existePersona(p4);
 		System.out.println("clave" + p4.getClave());
 		assertTrue(r);
 	}
@@ -94,7 +94,7 @@ public class Main {
 		System.out.println("inserto p5");
 		hash.insertar(p5);
 
-		boolean r = hash.existe(p5.getCedula());
+		boolean r = hash.existePersona(p5);
 		System.out.println("clave" + p5.getClave());
 		assertTrue(r);
 	}
@@ -116,7 +116,7 @@ public class Main {
 
 	public static void testInsertarEnHashCerradoP7() {
 
-		System.out.println("testInsertarEnHashCerradoP6");
+		System.out.println("testInsertarEnHashCerradoP7");
 
 		Persona p7 = new Persona();
 		p7.setCedula("12335688");
@@ -131,7 +131,7 @@ public class Main {
 
 	public static void testInsertarEnHashCerradoP8() {
 
-		System.out.println("testInsertarEnHashCerradoP6");
+		System.out.println("testInsertarEnHashCerradoP8");
 
 		Persona p8 = new Persona();
 		p8.setCedula("12335888");
@@ -141,7 +141,7 @@ public class Main {
 
 		boolean r = hash.existePersona(p8);
 		System.out.println("clave" + p8.getClave());
-		assertTrue(r);
+		assertFalse(r);
 	}
 
 	public static void destruirHash() {

@@ -7,7 +7,7 @@ public class HashCerradoLineal {
 
 	// capacidad expresada en nro primo, igual o mayor a n
 	int capacidad;
-	NodoLD[] nodos;
+	public NodoLD[] nodos;
 
 	public HashCerradoLineal(int capacidad) {
 
@@ -21,28 +21,42 @@ public class HashCerradoLineal {
 	}
 
 	public void insertar(Persona p) {
-
 		int x = 1;
-
 		int llave = Integer.parseInt(p.getCedula());
-
-		int pos = h(llave);
-		System.out.println("Calculo pos: " + pos);
-
-		if (!existe(p.getCedula())) {
-			if (nodos[pos].getElemento().equals("")) {
-				System.out.println("posicion libre en clave " + pos);
-			} else {
-				while (!nodos[pos].getElemento().equals("")) {
-					System.out
-							.println("Todavia no encontre un lugar libre para insertar una nueva cedula");
+		int pos = (x + llave) % capacidad;
+		boolean noInserto = true;
+		if (!estaLLeno()) {
+			if (!existePersona(p)) {
+				while (noInserto) {
 					pos = (x + llave) % capacidad;
+					if (nodos[pos].getElemento().equals("")) {
+						System.out.println("posicion libre en clave " + pos);
+						nodos[pos].setElemento(p.getCedula());
+						nodos[pos].setClave(pos);
+						p.setClave(pos);
+						noInserto = false;
+					} else {
+						x++;
+						System.out.println("Todavia no encontre un lugar libre para insertar una nueva cedula");
+					}
 				}
 			}
 		}
+	}
 
-		nodos[pos].setElemento(p.getCedula());
-		p.setClave(pos);
+	private boolean estaLLeno() {
+		int c = nodos.length;
+		boolean altRes = false;
+		for (int i = 0; i < c; i++) {
+			if (nodos[i].getElemento().equals("")) {
+				altRes = false;
+				return altRes;
+			} else {
+				altRes = true;
+			}
+		}
+		System.out.println("esta LLENO");
+		return altRes;
 	}
 
 	private int h(int cedula) {
@@ -70,7 +84,7 @@ public class HashCerradoLineal {
 	}
 
 	public boolean existePersona(Persona p) {
-		if (p.getClave() != 0) {
+		if (p.getClave() > -1) {
 			if (nodos[p.getClave()].getElemento().equals(p.getCedula())) {
 				return true;
 			}
